@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Common styles for navbar */
+        .navbar {
+            background-color: black;
+            padding: 28px 38px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            margin-bottom: 20px;
+            outline: none;
+            box-shadow: 0 0 1em 0.25em #007bff, 0 0 4em 1em rgba(191, 123, 255, 0.781),
+                inset 0 0 0.75em 0.25em #007bff;
+            text-shadow: 0 0 0.5em #007bff;
+            transition: all 0.3s;
+        }
+
+        /* Styles for nav links */
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            margin-left: 20px;
+            padding: 5px;
+            position: relative;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        /* Home page styles */
+        #home {
+            background-image: url('https://www.datasciencecentral.com/wp-content/uploads/2023/09/AdobeStock_613025532-scaled.jpeg');
+            background-size: cover;
+            background-position: center center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            position: absolute;
+            top: 250px;
+            left: 20px;
+            right: 0;
+            margin: 20px;
+            margin-bottom: 100px;
+            margin-right: 200px;
+            margin-left: 20px;
+        }
+
+        .welcome-container {
+            text-align: left;
+    font-size: 20px;
+    color: white;
+    margin: 10px 0;
+    padding: -10 20%;
+    margin-left: 770px;
+    margin-top: -50px;
+            opacity: 0;
+            animation: slideIn 3s ease forwards;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #about {
+            background-image: url('');
+            background-size: cover;
+            background-position: center center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #about-content {
+            text-align: center;
+        }
+
+        #algorithms {
+            background-image: url('');
+            background-size: cover;
+            background-position: center center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="navbar">
+        <div class="nav-links">
+            <a href="#home" class="nav-link" onclick="showPage('home')">Home</a>
+            <a href="#about" class="nav-link" onclick="showPage('about')">About</a>
+            <a href="#algorithms" class="nav-link" onclick="showPage('algorithms')">Algorithms</a>
+          <!----  <a href="#logout" class="nav-link" onclick="logout()">Logout</a> -->
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <div id="home">
+        <img src="https://cdn.dribbble.com/users/2187113/screenshots/4598591/400x300.gif"  height="520"  alt="Example GIF">
+
+        <div class="welcome-container">
+            <h2 id="text-align=right margin-right=200" ><span >WELCOME</span> to Cheque Curation.</h2>
+            <h2>Our platform offers a service to help you determine<br> authenticity of your cheque.</h2>
+            <h2>Simply upload an image of your cheque, and our <br>system will verify whether it's real or fake.</h2>
+        </div>
+    </div>
+    
+
+    <!-- About Page -->
+    <div id="about" class="hidden">
+        <div id="about-content">
+            <h1>About Page</h1>
+            
+            <p>This is the About page content.</p>
+        </div>
+    </div>
+
+    <!-- Algorithms Page -->
+    <div id="algorithms" class="hidden">
+        <h1>Algorithms Page</h1>
+        <p>This is the Algorithms page content.</p>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function handleUpload() {
+            const imageData = 'data:image/png;base64,iVBORw...'; // Example base64 image data
+            window.location.href = '/Cart?image=' + encodeURIComponent(imageData);
+        }
+
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.hidden');
+            pages.forEach(page => {
+                if (page.id === pageId) {
+                    page.classList.remove('hidden');
+                } else {
+                    page.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
